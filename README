@@ -1,0 +1,40 @@
+# Portal de Juegos
+
+Este es un proyecto web básico que sirve como portal para juegos. Actualmente incluye un juego funcional de **3 en Raya** para dos jugadores en el mismo dispositivo. El proyecto está diseñado para ser escalable, permitiendo añadir más juegos en el futuro.
+
+---
+
+## 📋 Funcionalidades
+
+- **Portal principal**:
+  - Página de inicio con un menú superior fijo y botones estilizados para navegar entre juegos.
+  - Diseño responsivo para adaptarse a diferentes tamaños de pantalla.
+  
+- **Juego 3 en Raya**:
+  - Modo para dos jugadores.
+  - Interfaz intuitiva con diseño atractivo.
+  - Diferenciación de jugadores mediante colores: `X` (azul) y `O` (rojo).
+  - Soporte para reiniciar la partida.
+  - Modo oscuro para una experiencia visual más cómoda.
+
+---
+
+## 📁 Estructura del Proyecto
+
+
+---
+
+## 🚀 Instalación y Ejecución
+
+1. **Descarga el proyecto**:
+   ```bash
+   git clone https://github.com/tu-usuario/portal-de-juegos.git
+
+
+
+### Instrucciones de Uso
+1. Guarda este contenido en un archivo llamado `README.md` en la raíz de tu proyecto.
+2. Si estás utilizando un repositorio de GitHub, GitLab o similar, el archivo se mostrará automáticamente en la página principal del repositorio.
+
+Este README es una excelente forma de documentar tu proyecto, haciendo que sea claro y profesional. 😊
+    
