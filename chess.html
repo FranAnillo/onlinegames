@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajedrez</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin: 0;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    .board {
+      display: grid;
+      grid-template-columns: repeat(8, 60px);
+      grid-template-rows: repeat(8, 60px);
+      border: 2px solid #333;
+    }
+    .cell {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+    .cell.selected {
+  outline: 2px solid yellow;
+}
+
+    .cell.white {
+      background-color: #eee;
+    }
+    .cell.black {
+      background-color: #333;
+      color: white;
+    }
+    .piece {
+      cursor: grab;
+    }
+    #resetButton {
+  margin: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+#resetButton:hover {
+  background-color: #0056b3;
+}
+.cell.valid-move {
+  outline: 2px solid green;
+  background-color: rgba(0, 128, 0, 0.2); /* Fondo verdoso translúcido */
+}
+#turn-indicator {
+  display: block; /* Asegura que sea visible */
+  visibility: visible;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: black; /* Cambia según el diseño */
+}
+
+
+
+  </style>
+</head>
+<body>
+  <h1>Juego de Ajedrez</h1>
+  <div class="board" id="board"></div>
+  <div id="turn-indicator">Turno: Blancas</div>
+  <button id="resetButton">Reiniciar Tablero</button>
+  <script src="chess.js"></script>
+</body>
+</html>
