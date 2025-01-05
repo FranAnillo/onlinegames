@@ -1,6 +1,7 @@
 # Portal de Juegos
 
-Este es un proyecto web básico que sirve como portal para juegos. Actualmente incluye un juego funcional de **3 en Raya** para dos jugadores en el mismo dispositivo. El proyecto está diseñado para ser escalable, permitiendo añadir más juegos en el futuro.
+Este es un proyecto web básico que sirve como portal para juegos. Actualmente incluye un juego funcional de **3 en Raya** para dos jugadores en el mismo dispositivo. 
+El proyecto está diseñado para ser escalable, permitiendo añadir más juegos en el futuro.
 
 ---
 
@@ -23,8 +24,11 @@ Este es un proyecto web básico que sirve como portal para juegos. Actualmente i
 / (Raíz del proyecto) 
 ├── index.html # Página principal del portal 
 ├── tres-en-raya.html # Página del juego 3 en Raya 
-├── style-index.css # Archivo CSS para el diseño del indez 
-├── script.js # Archivo JavaScript para la lógica del portal 
+├── style-index.css # Archivo CSS para el diseño del index 
+├── script.js # Archivo JavaScript para la lógica del portal
+├── style-index.css # Archivo CSS para el diseño del juego de Ajedrez 
+├── chess.js # Archivo JavaScript para la lógica de Ajedrez
+├── chess.html # Página del juego de Ajedrez
 └── README.md # Documentación del proyecto
 
 🌟 Cómo Jugar al 3 en Raya
