@@ -7,11 +7,11 @@ El proyecto está diseñado para ser escalable, permitiendo añadir más juegos 
 
 ## 📋 Funcionalidades
 
-- **Portal principal**:
+- *Portal principal*:
   - Página de inicio con un menú superior fijo y botones estilizados para navegar entre juegos.
   - Diseño responsivo para adaptarse a diferentes tamaños de pantalla.
   
-- **Juego 3 en Raya**:
+- *Juego 3 en Raya*:
   - Modo para dos jugadores.
   - Interfaz intuitiva con diseño atractivo.
   - Diferenciación de jugadores mediante colores: `X` (azul) y `O` (rojo).
