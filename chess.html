@@ -4,86 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ajedrez</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      margin: 0;
-      height: 100vh;
-      background-color: #f4f4f4;
-    }
-    h1 {
-      margin-bottom: 20px;
-    }
-    .board {
-      display: grid;
-      grid-template-columns: repeat(8, 60px);
-      grid-template-rows: repeat(8, 60px);
-      border: 2px solid #333;
-    }
-    .cell {
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5em;
-      cursor: pointer;
-    }
-    .cell.selected {
-  outline: 2px solid yellow;
-}
-
-    .cell.white {
-      background-color: #eee;
-    }
-    .cell.black {
-      background-color: #333;
-      color: white;
-    }
-    .piece {
-      cursor: grab;
-    }
-    #resetButton {
-  margin: 20px;
-  padding: 10px 20px;
-  font-size: 1em;
-  cursor: pointer;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-#resetButton:hover {
-  background-color: #0056b3;
-}
-.cell.valid-move {
-  outline: 2px solid green;
-  background-color: rgba(0, 128, 0, 0.2); /* Fondo verdoso translúcido */
-}
-#turn-indicator {
-  display: block; /* Asegura que sea visible */
-  visibility: visible;
-  font-size: 1.2em;
-  font-weight: bold;
-  color: black; /* Cambia según el diseño */
-}
-
-
-
-  </style>
+  <link rel="stylesheet" href="style-chess.css">
 </head>
 <body>
+    <header>
+        <div class="logo">Portal de Juegos</div>
+        <nav class="menu">
+          <a href="index.html">Inicio</a>
+          <a href="tictactoe.html">3 en Raya</a>
+          <a href="chess.html">Ajedrez</a>
+        </nav>
+        <div class="theme-toggle">
+            <label for="themeSwitch">Modo Oscuro</label>
+            <input type="checkbox" id="themeSwitch">
+        </div>
+    </header>
   <h1>Juego de Ajedrez</h1>
-  <div class="board" id="board"></div>
+  
+  <!-- Contenedor del tablero y el resumen -->
+  <div class="game-container">
+    <!-- Tablero -->
+    <div class="board" id="board"></div>
+
+    <!-- Resumen de la partida -->
+    <div class="summary" id="summary">
+      <h3>Resumen de la partida</h3>
+      <div id="captured-by-white">
+        <h4>Blancas</h4>
+        <ul></ul>
+      </div>
+      <div id="captured-by-black">
+        <h4>Negras</h4>
+        <ul></ul>
+    </div>
+    <!-- Botón de reinicio -->
+    <button id="resetButton">Reiniciar Tablero</button>
+  </div>
+    </div>
+  </div>
+
+  <!-- Modal para jaque -->
+  <div id="check-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-modal" class="close">&times;</span>
+      <p id="modal-message">¡Jaque al rey!</p>
+    </div>
+  </div>
+
+  <!-- Indicador de turno -->
   <div id="turn-indicator">Turno: Blancas</div>
-  <button id="resetButton">Reiniciar Tablero</button>
+
+  <!-- Archivo JavaScript -->
   <script src="chess.js"></script>
 </body>
 </html>

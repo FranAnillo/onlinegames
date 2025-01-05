@@ -57,19 +57,23 @@ function createBoard() {
  * Crea una celda del tablero
  */
 function createCell(row, col, piece) {
-  const cell = document.createElement('div');
-  cell.className = `cell ${((row + col) % 2 === 0) ? 'white' : 'black'}`;
-  cell.dataset.row = row;
-  cell.dataset.col = col;
-
-  if (piece) {
-    const pieceElement = createPieceElement(piece);
-    cell.appendChild(pieceElement);
+    const cell = document.createElement('div');
+    cell.className = `cell ${((row + col) % 2 === 0) ? 'white' : 'black'}`;
+    cell.dataset.row = row;
+    cell.dataset.col = col;
+  
+    if (piece) {
+      const pieceElement = createPieceElement(piece);
+      cell.appendChild(pieceElement);
+      // Posicionar la pieza dentro de la celda
+      pieceElement.style.left = '0';
+      pieceElement.style.top = '0';
+    }
+  
+    cell.addEventListener('click', () => handleCellClick(cell));
+    return cell;
   }
-
-  cell.addEventListener('click', () => handleCellClick(cell));
-  return cell;
-}
+  
 
 /**
  * Crea un elemento HTML para una pieza
@@ -90,6 +94,15 @@ function handleCellClick(cell) {
       // Mover pieza si la celda es válida
       if (cell.classList.contains('valid-move')) {
         movePiece(selectedCell, cell);
+  
+        // Verificar si el rey está en jaque
+        if (isKingInCheck(currentTurn)) {
+          if (isCheckmate(currentTurn)) {
+            showModal(`¡Jaque mate! Las ${currentTurn === "white" ? "negras" : "blancas"} ganan.`);
+          } else {
+            showModal("¡Jaque al rey!");
+          }
+        }
   
         // Cambiar el turno después de un movimiento válido
         changeTurn();
@@ -177,16 +190,58 @@ function clearSelection() {
 }
 
 /**
- * Mueve una pieza de una celda a otra
+ * Mueve una pieza de una celda a otra con animación
+ * @param {HTMLElement} fromCell - Celda de origen
+ * @param {HTMLElement} toCell - Celda de destino
  */
 function movePiece(fromCell, toCell) {
-  const piece = fromCell.querySelector('.piece');
-  if (piece) {
-    toCell.innerHTML = ""; // Limpia la celda de destino
-    toCell.appendChild(piece); // Mueve la pieza
+    const piece = fromCell.querySelector('.piece');
+    if (piece) {
+      // Obtener las coordenadas de la celda destino
+      const toCellRect = toCell.getBoundingClientRect();
+      const fromCellRect = fromCell.getBoundingClientRect();
+  
+      // Calcular la diferencia en posición
+      const deltaX = toCellRect.left - fromCellRect.left;
+      const deltaY = toCellRect.top - fromCellRect.top;
+  
+      // Eliminar cualquier pieza en la celda destino (captura)
+      const targetPiece = toCell.querySelector('.piece');
+      if (targetPiece) {
+        // Capturar la pieza enemiga
+        registerCapture(targetPiece.innerText, currentTurn);
+        targetPiece.remove(); // Eliminar la pieza capturada
+      }
+  
+      // Aplicar la transformación
+      piece.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+  
+      // Esperar a que termine la animación antes de mover la pieza
+      setTimeout(() => {
+        toCell.appendChild(piece); // Mueve la pieza al DOM de la celda destino
+        piece.style.transform = ''; // Restablece la transformación
+      }, 300); // Duración de la animación (en milisegundos)
+  
+      // Limpiar la celda de origen
+      fromCell.innerHTML = '';
+    }
   }
-}
-
+  
+/**
+ * Registra una captura en el resumen de la partida
+ * @param {string} piece - La pieza capturada
+ * @param {string} currentTurn - El jugador activo
+ */
+function registerCapture(piece, currentTurn) {
+    const summaryId = currentTurn === "white" ? "captured-by-black" : "captured-by-white";
+    const summaryList = document.querySelector(`#${summaryId} ul`);
+  
+    if (summaryList) {
+      const listItem = document.createElement('li');
+      listItem.textContent = piece; // Agregar la pieza capturada al resumen
+      summaryList.appendChild(listItem);
+    }
+  }
 function isValidMove(fromCell, toCell) {
     const fromRow = parseInt(fromCell.dataset.row, 10);
     const fromCol = parseInt(fromCell.dataset.col, 10);
@@ -194,6 +249,18 @@ function isValidMove(fromCell, toCell) {
     const toCol = parseInt(toCell.dataset.col, 10);
     const piece = fromCell.querySelector('.piece').innerText;
   
+
+  // Verificar si la celda destino contiene una pieza del mismo color
+  const targetPiece = toCell.querySelector('.piece');
+  if (targetPiece) {
+    const isSameColor =
+      ("♙♖♘♗♕♔".includes(piece) && "♙♖♘♗♕♔".includes(targetPiece.innerText)) ||
+      ("♟♜♞♝♛♚".includes(piece) && "♟♜♞♝♛♚".includes(targetPiece.innerText));
+    if (isSameColor) {
+      return false; // No se puede mover a una celda ocupada por una pieza del mismo color
+    }
+  }
+
     // No puedes moverte a la misma celda
     if (fromRow === toRow && fromCol === toCol) {
       return false;
@@ -447,3 +514,128 @@ resetButton.addEventListener('click', createBoard);
 
 // Inicializa el tablero
 createBoard();
+
+/**
+ * Encuentra la celda donde se encuentra el rey del jugador actual
+ * @param {string} king - La pieza del rey ("♔" o "♚")
+ * @returns {HTMLElement} - La celda donde está el rey
+ */
+function findKingCell(king) {
+    const allCells = Array.from(board.querySelectorAll('.cell'));
+    return allCells.find(cell => {
+      const piece = cell.querySelector('.piece');
+      return piece && piece.innerText === king;
+    });
+  }
+
+  
+  /**
+ * Verifica si el rey del jugador actual está en jaque
+ * @param {string} currentTurn - El jugador actual ("white" o "black")
+ * @returns {boolean} - True si el rey está en jaque, False en caso contrario
+ */
+function isKingInCheck(currentTurn) {
+    const king = currentTurn === "white" ? "♔" : "♚";
+    const kingCell = findKingCell(king);
+  
+    if (!kingCell) {
+      console.error("No se encontró al rey en el tablero.");
+      return false;
+    }
+  
+    // Verificar si alguna pieza enemiga puede atacar al rey
+    const opponentPieces = currentTurn === "white" ? "♟♜♞♝♛♚" : "♙♖♘♗♕♔";
+    const allCells = Array.from(board.querySelectorAll('.cell'));
+  
+    for (const potentialAttackerCell of allCells) {
+      const piece = potentialAttackerCell.querySelector('.piece');
+      if (piece && opponentPieces.includes(piece.innerText)) {
+        if (canPieceAttackCell(potentialAttackerCell, kingCell, piece.innerText)) {
+          return true; // Rey está en jaque
+        }
+      }
+    }
+  
+    return false; // Rey no está en jaque
+  }
+  
+
+  /**
+ * Muestra el modal de notificación
+ * @param {string} message - Mensaje a mostrar en el modal
+ */
+  function showModal(message) {
+    const modal = document.getElementById('check-modal');
+    const modalMessage = document.getElementById('modal-message');
+    
+    if (modal && modalMessage) {
+      modalMessage.textContent = message; // Configurar el mensaje del modal
+      modal.style.display = 'block'; // Mostrar el modal
+    }
+  }
+  
+  /**
+   * Oculta el modal de notificación
+   */
+  function closeModal() {
+    const modal = document.getElementById('check-modal');
+    if (modal) {
+      modal.style.display = 'none'; // Ocultar el modal
+    }
+  }
+  
+  // Configurar el botón de cerrar
+  const closeModalButton = document.getElementById('close-modal');
+  if (closeModalButton) {
+    closeModalButton.addEventListener('click', closeModal);
+  }
+  
+  // Ocultar el modal si se hace clic fuera del contenido
+  window.addEventListener('click', (event) => {
+    const modal = document.getElementById('check-modal');
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+  
+  /**
+ * Verifica si el jugador actual está en jaque mate
+ * @param {string} currentTurn - El jugador actual ("white" o "black")
+ * @returns {boolean} - True si es jaque mate, False en caso contrario
+ */
+function isCheckmate(currentTurn) {
+    const allCells = Array.from(board.querySelectorAll('.cell'));
+    const playerPieces = currentTurn === "white" ? "♙♖♘♗♕♔" : "♟♜♞♝♛♚";
+  
+    // Iterar sobre todas las celdas del jugador actual
+    for (const fromCell of allCells) {
+      const piece = fromCell.querySelector('.piece');
+      if (piece && playerPieces.includes(piece.innerText)) {
+        // Verificar si alguna pieza tiene movimientos legales
+        for (const toCell of allCells) {
+          if (isValidMove(fromCell, toCell)) {
+            // Simular el movimiento para verificar si sale del jaque
+            const originalPiece = toCell.innerHTML;
+            movePiece(fromCell, toCell);
+            const isStillInCheck = isKingInCheck(currentTurn);
+  
+            // Revertir el movimiento simulado
+            movePiece(toCell, fromCell);
+            toCell.innerHTML = originalPiece;
+  
+            if (!isStillInCheck) {
+              return false; // Hay un movimiento legal, no es jaque mate
+            }
+          }
+        }
+      }
+    }
+  
+    return true; // No hay movimientos legales, es jaque mate
+  }
+  
+  function playMoveSound() {
+    const audio = new Audio('move-sound.mp3'); // Ruta al archivo de sonido
+    audio.play();
+  }
+  
