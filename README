@@ -1,6 +1,6 @@
 # Portal de Juegos
 
-Este es un proyecto web básico que sirve como portal para juegos. Actualmente incluye un juego funcional de **3 en Raya** para dos jugadores en el mismo dispositivo. 
+Este es un proyecto web básico que sirve como portal para juegos. Actualmente incluye un juego funcional de 3 en Raya para dos jugadores en el mismo dispositivo. 
 El proyecto está diseñado para ser escalable, permitiendo añadir más juegos en el futuro.
 
 ---
