@@ -51,6 +51,8 @@ function createBoard() {
       board.appendChild(cell);
     }
   }
+  currentTurn = "white"; 
+  resetSummary();
 }
 
 /**
@@ -323,18 +325,16 @@ function isValidMove(fromCell, toCell) {
       }
     }
   
-    // Regla para caballos
-    if (piece === "♞" || piece === "♘") {
-      const rowDiff = Math.abs(toRow - fromRow);
-      const colDiff = Math.abs(toCol - fromCol);
-  
-      if ((rowDiff === 2 && colDiff === 1) || (rowDiff === 1 && colDiff === 2)) {
-        const targetPiece = toCell.querySelector('.piece');
-        if (!targetPiece || (piece === "♘" && "♟♜♞♝♛♚".includes(targetPiece)) || (piece === "♞" && "♙♖♘♗♕♔".includes(targetPiece))) {
-          return true;
-        }
-      }
+  // Reglas específicas para el caballo
+  if (piece === "♞" || piece === "♘") {
+    const rowDiff = Math.abs(toRow - fromRow);
+    const colDiff = Math.abs(toCol - fromCol);
+
+    // Movimiento en "L": 2 casillas en una dirección y 1 en la otra
+    if ((rowDiff === 2 && colDiff === 1) || (rowDiff === 1 && colDiff === 2)) {
+      return true; // Movimiento válido
     }
+  }
   
     // Regla para reinas
     if (piece === "♛" || piece === "♕") {
@@ -638,4 +638,12 @@ function isCheckmate(currentTurn) {
     const audio = new Audio('move-sound.mp3'); // Ruta al archivo de sonido
     audio.play();
   }
+  
+  function resetSummary() {
+    document.querySelectorAll('.summary ul').forEach(ul => ul.innerHTML = '');
+  }
+  resetButton.addEventListener('click', () => {
+    createBoard();
+    resetSummary();
+  });
   
