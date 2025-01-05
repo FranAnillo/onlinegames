@@ -72,7 +72,7 @@ El portal y el juego soportan un modo oscuro. Puedes activarlo desde el botón c
 
 1. Descarga el proyecto:
    ```bash
-   git clone https://github.com/tu-usuario/portal-de-juegos.git
+   git clone https://github.com/FranAnillo/onlinegames.git
 2. Abre el proyecto: Ve al directorio del proyecto y abre el archivo index.html en tu navegador.
 
 3. Usa Live Server (opcional): Si tienes Visual Studio Code instalado:
