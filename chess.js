@@ -2,6 +2,7 @@
 const board = document.getElementById('board');
 const resetButton = document.getElementById('resetButton');
 let currentTurn = "white"; // El turno comienza con las blancas
+const messageElement = document.getElementById('message');
 
 /**
  * Cambia el turno al jugador opuesto
@@ -11,7 +12,7 @@ function changeTurn() {
     const turnIndicator = document.getElementById('turn-indicator');
     if (turnIndicator) {
         turnIndicator.innerHTML = `Turno: ${currentTurn === "white" ? "Blancas" : "Negras"}`;
-
+        
   
       // Forzar re-renderizado
       turnIndicator.style.display = "none";
@@ -52,6 +53,7 @@ function createBoard() {
     }
   }
   currentTurn = "white"; 
+  messageElement.innerText = `Turno de las piezas ${currentTurn}`;
   resetSummary();
 }
 
@@ -125,6 +127,7 @@ function handleCellClick(cell) {
   function changeTurn() {
     currentTurn = currentTurn === "white" ? "black" : "white";
     console.log(`Turno actual: ${currentTurn === "white" ? "Blancas" : "Negras"}`);
+    messageElement.innerText = `Turno de las piezas ${currentTurn}`;
   }
   
 
