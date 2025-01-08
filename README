@@ -1,58 +1,102 @@
-# Portal de Juegos
+## Portal de Juegos
 
-Este es un proyecto web básico que sirve como portal para juegos. Actualmente incluye un juego funcional de 3 en Raya para dos jugadores en el mismo dispositivo. 
-El proyecto está diseñado para ser escalable, permitiendo añadir más juegos en el futuro.
+Este es un proyecto web básico que sirve como portal para juegos. Actualmente incluye 3 en Raya, Buscaminas y Piedra, Papel o Tijeras. Diseñado para ser escalable, el proyecto permite añadir más juegos en el futuro.
 
 ---
 
 ## 📋 Funcionalidades
+Portal Principal
 
-- Portal principal:
-  - Página de inicio con un menú superior fijo y botones estilizados para navegar entre juegos.
-  - Diseño responsivo para adaptarse a diferentes tamaños de pantalla.
-  
-- Juego 3 en Raya:
-  - Modo para dos jugadores.
-  - Interfaz intuitiva con diseño atractivo.
-  - Diferenciación de jugadores mediante colores: `X` (azul) y `O` (rojo).
-  - Soporte para reiniciar la partida.
-  - Modo oscuro para una experiencia visual más cómoda.
+    Página de inicio con un menú superior fijo y botones estilizados para navegar entre juegos.
+    Diseño responsivo para adaptarse a diferentes tamaños de pantalla.
 
----
+Juegos Incluidos
+3 en Raya
+
+    Modo para dos jugadores en el mismo dispositivo.
+    Diferenciación de jugadores con colores: X (azul) y O (rojo).
+    Reinicio de la partida en cualquier momento.
+    Modo oscuro para mayor comodidad visual.
+
+Buscaminas
+
+    Personalización del tablero: elige el tamaño y el número de minas.
+    Marcado de banderas para señalar celdas sospechosas.
+    Contador dinámico de minas restantes.
+    Condiciones claras de victoria y derrota:
+        Ganas al descubrir todas las celdas sin minas.
+        Pierdes al hacer clic en una mina.
+
+Piedra, Papel o Tijeras
+
+    Jugador vs IA:
+        La IA selecciona su jugada al azar.
+        Muestra el resultado y la elección de la IA.
+    Sistema de puntuación dinámico que actualiza las victorias, derrotas y empates.
+    Interfaz simple con botones estilizados.
 
 ## 📁 Estructura del Proyecto
-/ (Raíz del proyecto) 
+/ (Raíz del proyecto)
 ├── chess
-    ├── chess.js # Archivo JavaScript para la lógica de Ajedrez
-    ├── chess.html # Página del juego de Ajedrez
-    └── style-chess.css # Archivo CSS para el diseño del juego de Ajedrez
+│   ├── chess.js                  # Lógica del juego de Ajedrez
+│   ├── chess.html                # Página del juego de Ajedrez
+│   └── style-chess.css           # Estilo del juego de Ajedrez
 ├── tictactoe
-    └── tictactoe.html # Página del juego 3 en Raya
+│   └── tictactoe.html            # Página del juego 3 en Raya
 ├── buscaminas
-    ├── buscaminas.js # Archivo JavaScript para la lógica de buscaminas
-    ├── buscaminas.html # Página del juego de buscaminas
-    └── style-buscaminas.css # Archivo CSS para el diseño del juego de buscaminas
+│   ├── buscaminas.js             # Lógica del juego Buscaminas
+│   ├── buscaminas.html           # Página del juego Buscaminas
+│   └── style-buscaminas.css      # Estilo del juego Buscaminas
 ├── rock-paper-scissors
-    ├── rps.js # Archivo JavaScript para la lógica de buscaminas
-    ├── rock-paper-scissors.html # Página del juego de buscaminas
-    └── style-rock-paper-scissors.css # Archivo CSS para el diseño del juego de buscaminas
-├── index.html # Página principal del portal 
-├── style-index.css # Archivo CSS para el diseño del index 
-└── README.md # Documentación del proyecto
+│   ├── rps.js                    # Lógica del juego Piedra, Papel o Tijeras
+│   ├── rock-paper-scissors.html  # Página del juego Piedra, Papel o Tijeras
+│   └── style-rock-paper-scissors.css # Estilo del juego Piedra, Papel o Tijeras
+├── index.html                    # Página principal del portal
+├── style-index.css               # Estilo del portal principal
+└── README.md                     # Documentación del proyecto
 
-🌟 Cómo Jugar al 3 en Raya
 
-    Desde la página principal, haz clic en el botón 3 en Raya.
-    El primer jugador usa X y el segundo jugador usa O.
-    Haz clic en las celdas vacías para jugar.
-    El juego determina automáticamente si hay un ganador o un empate.
-    Usa el botón Reiniciar para comenzar una nueva partida.
+## 🌟 Cómo Jugar
+
+3 en Raya
+
+    Haz clic en el botón 3 en Raya desde la página principal.
+    Juega alternando entre X y O.
+    El juego detecta automáticamente si hay un ganador o empate.
+    Usa el botón Reiniciar para comenzar de nuevo.
+
+Buscaminas
+
+    Haz clic en el botón Buscaminas desde la página principal.
+    Personaliza el tablero seleccionando el tamaño y el número de minas.
+    Descubre celdas con clic izquierdo y usa clic derecho para colocar banderas.
+    Gana al descubrir todas las celdas sin minas.
+
+Piedra, Papel o Tijeras
+
+    Accede desde la página principal.
+    Selecciona Piedra 🪨, Papel 📄 o Tijeras ✂️.
+    Observa la elección de la IA y el resultado.
+    El sistema actualiza la puntuación automáticamente.
 
 🛠️ Tecnologías Utilizadas
 
     HTML5: Estructura del proyecto.
-    CSS3: Diseño responsivo y efectos visuales.
-    JavaScript: Lógica del juego y del portal.
+    CSS3: Diseño responsivo y estilización visual.
+    JavaScript: Lógica de los juegos y del portal.
+
+📚 Futuras Mejoras
+
+    Añadir más juegos:
+        Ahorcado.
+        Serpientes y escaleras.
+        Conecta 4.
+    Diseño avanzado:
+        Animaciones visuales más atractivas.
+    Base de datos:
+        Guardar puntuaciones y estadísticas globales.
+    Modo multijugador en línea:
+        Habilitar partidas con amigos.
 
 🌌 Modo Oscuro
 
@@ -68,22 +112,28 @@ El portal y el juego soportan un modo oscuro. Puedes activarlo desde el botón c
 
 👥 Contribuciones
 
-¡Las contribuciones son bienvenidas! Si deseas contribuir:
+¡Las contribuciones son bienvenidas! Para contribuir:
 
-    Haz un fork del repositorio.
-    Crea una nueva rama (git checkout -b feature/nueva-funcionalidad).
-    Realiza tus cambios y haz commit (git commit -m 'Añadí nueva funcionalidad').
-    Sube tus cambios (git push origin feature/nueva-funcionalidad).
-    Abre un Pull Request.
+1. Haz un fork del repositorio.
+2. Crea una nueva rama:
+    git checkout -b feature/nueva-funcionalidad
+3. Realiza tus cambios y haz commit:
+git commit -m 'Añadí nueva funcionalidad'
+4. Sube tus cambios:
+git push origin feature/nueva-funcionalidad
+5. Abre un Pull Request.
 ---
 
 ## 🚀 Instalación y Ejecución
 
-1. Descarga el proyecto:
-   ```bash
-   git clone https://github.com/FranAnillo/onlinegames.git
-2. Abre el proyecto: Ve al directorio del proyecto y abre el archivo index.html en tu navegador.
+1. Clona el repositorio:
 
-3. Usa Live Server (opcional): Si tienes Visual Studio Code instalado:
- * Instala la extensión Live Server.
- * Haz clic derecho en index.html y selecciona "Open with Live Server".
+git clone https://github.com/FranAnillo/onlinegames.git
+
+2. Ve al directorio del proyecto y abre el archivo index.html en tu navegador.
+
+3. Opcional: Usa Live Server
+
+    Si usas Visual Studio Code:
+        Instala la extensión Live Server.
+        Haz clic derecho en index.html y selecciona Open with Live Server.
