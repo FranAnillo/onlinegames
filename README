@@ -27,7 +27,7 @@ El proyecto está diseñado para ser escalable, permitiendo añadir más juegos 
     ├── chess.html # Página del juego de Ajedrez
     └── style-chess.css # Archivo CSS para el diseño del juego de Ajedrez
 ├── tictactoe
-    └── tres-en-raya.html # Página del juego 3 en Raya 
+    └── tictactoe.html # Página del juego 3 en Raya 
 ├── index.html # Página principal del portal 
 ├── style-index.css # Archivo CSS para el diseño del index 
 └── README.md # Documentación del proyecto

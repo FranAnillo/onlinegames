@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscaminas</title>
+  <link rel="stylesheet" href="style-buscaminas.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Portal de Juegos</div>
+        <nav class="menu">
+          <a href="../index.html">Inicio</a>
+          <a href="../tictactoe/tictactoe.html">3 en Raya</a>
+          <a href="../chess/chess.html">Ajedrez</a>
+        </nav>
+        <div class="theme-toggle">
+            <label for="themeSwitch">Modo Oscuro</label>
+            <input type="checkbox" id="themeSwitch">
+        </div>
+    </header>
+  <h1>Buscaminas</h1>
+  <div class="game-container">
+    <div id="board"></div>
+    <div class="info-panel">
+      <p id="mines-counter">Minas restantes: 10</p>
+      <button id="resetButton">Reiniciar Juego</button>
+    </div>
+  </div>
+  
+  <div class="customization-panel">
+    <h2>Personalizar el Juego</h2>
+    <form id="customization-form">
+      <label for="board-size">Tamaño del Tablero:</label>
+      <select id="board-size">
+        <option value="8">8x8</option>
+        <option value="10">10x10</option>
+        <option value="12">12x12</option>
+      </select>
+      <label for="mine-count">Número de Minas:</label>
+      <input id="mine-count" type="number" min="1" max="50" value="10">
+      <button type="submit">Iniciar Juego</button>
+    </form>
+  </div>
+  
+  <p id="statusMessage"></p>
+  <script src="buscaminas.js"></script>
+</body>
+</html>
