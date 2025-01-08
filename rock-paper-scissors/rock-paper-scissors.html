@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piedra, Papel o Tijeras</title>
+  <link rel="stylesheet" href="style-rock-paper-scissors.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Portal de Juegos</div>
+        <nav class="menu">
+          <a href="../index.html">Inicio</a>
+          <a href="../tictactoe/tictactoe.html">3 en Raya</a>
+          <a href="../chess/chess.html">Ajedrez</a>
+        </nav>
+        <div class="theme-toggle">
+            <label for="themeSwitch">Modo Oscuro</label>
+            <input type="checkbox" id="themeSwitch">
+        </div>
+    </header>
+  <h1>Piedra, Papel o Tijeras</h1>
+  <div class="game-container">
+    <div class="choices">
+      <button class="choice" data-choice="rock">🪨 Piedra</button>
+      <button class="choice" data-choice="paper">📄 Papel</button>
+      <button class="choice" data-choice="scissors">✂️ Tijeras</button>
+    </div>
+    <div class="result">
+      <p id="game-result">Elige tu jugada</p>
+      <p id="score">Jugador (Tú): 0 | Máquina: 0</p>
+    </div>
+  </div>
+  <script src="rps.js"></script>
+</body>
+</html>

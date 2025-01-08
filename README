@@ -32,6 +32,10 @@ El proyecto está diseñado para ser escalable, permitiendo añadir más juegos 
     ├── buscaminas.js # Archivo JavaScript para la lógica de buscaminas
     ├── buscaminas.html # Página del juego de buscaminas
     └── style-buscaminas.css # Archivo CSS para el diseño del juego de buscaminas
+├── rock-paper-scissors
+    ├── rps.js # Archivo JavaScript para la lógica de buscaminas
+    ├── rock-paper-scissors.html # Página del juego de buscaminas
+    └── style-rock-paper-scissors.css # Archivo CSS para el diseño del juego de buscaminas
 ├── index.html # Página principal del portal 
 ├── style-index.css # Archivo CSS para el diseño del index 
 └── README.md # Documentación del proyecto
