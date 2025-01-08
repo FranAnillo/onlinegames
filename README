@@ -27,7 +27,11 @@ El proyecto está diseñado para ser escalable, permitiendo añadir más juegos 
     ├── chess.html # Página del juego de Ajedrez
     └── style-chess.css # Archivo CSS para el diseño del juego de Ajedrez
 ├── tictactoe
-    └── tictactoe.html # Página del juego 3 en Raya 
+    └── tictactoe.html # Página del juego 3 en Raya
+├── buscaminas
+    ├── buscaminas.js # Archivo JavaScript para la lógica de buscaminas
+    ├── buscaminas.html # Página del juego de buscaminas
+    └── style-buscaminas.css # Archivo CSS para el diseño del juego de buscaminas
 ├── index.html # Página principal del portal 
 ├── style-index.css # Archivo CSS para el diseño del index 
 └── README.md # Documentación del proyecto
@@ -79,10 +83,3 @@ El portal y el juego soportan un modo oscuro. Puedes activarlo desde el botón c
 3. Usa Live Server (opcional): Si tienes Visual Studio Code instalado:
  * Instala la extensión Live Server.
  * Haz clic derecho en index.html y selecciona "Open with Live Server".
-
-
-### Instrucciones de Uso
-1. Guarda este contenido en un archivo llamado `README.md` en la raíz de tu proyecto.
-2. Si estás utilizando un repositorio de GitHub, GitLab o similar, el archivo se mostrará automáticamente en la página principal del repositorio.
-
-Este README es una excelente forma de documentar tu proyecto, haciendo que sea claro y profesional. 😊
